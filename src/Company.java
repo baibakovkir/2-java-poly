@@ -2,10 +2,10 @@ import deals.Deal;
 import taxes.TaxSystem;
 
 public class Company {
-    public String title;
+    private final String title;
     private TaxSystem taxSystem;
-    public int debit = 0;
-    public int credit = 0;
+    private int debit = 0;
+    private int credit = 0;
 
     public Company(String title, TaxSystem taxSystem) {
         this.title = title;
@@ -35,8 +35,8 @@ public class Company {
         int totalCreditChange = 0;
         int totalDebitChange = 0;
         for (Deal deal : deals) {
-            totalCreditChange += deal.creditChange;
-            totalDebitChange += deal.debitChange;
+            totalCreditChange += deal.getCreditChange();
+            totalDebitChange += deal.getDebitChange();
         }
         credit += totalCreditChange;
         debit += totalDebitChange;
